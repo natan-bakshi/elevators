@@ -49,6 +49,16 @@ while running:
         #     scroll_y -= event.y * 15
         #     scroll_y = min(max(scroll_y, 0), screen.get_height() - WINDOW_HEIGHT)
 
+
+
+
+
+
+
+
+
+
+
     blit_background()
     my_building.draw(screen)
     my_building.update(pos)

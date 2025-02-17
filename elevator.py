@@ -21,7 +21,6 @@ class Elevator:
         self.arrived_time = None
         self.final = None
         self.last_update = None
-        self.wait_start_time = None
         self.my_building = building
 
     def draw(self, screen, image):

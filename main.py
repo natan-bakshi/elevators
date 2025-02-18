@@ -1,10 +1,21 @@
 from building import *
 
-pygame.init()
+"""
+Main entry point of the project.
+
+This script initializes the application, sets up the display window, 
+and calls the necessary functions to run the simulation.
+"""
+
+
+pygame.init()  # Initialize pygame
 pygame.mixer.init()  # Initialize mixer
 pygame.mixer.music.load(DING_FILE_PATH)
 clock = pygame.time.Clock()
 
+"""    
+Initializes the display window with the specified dimensions and title.
+"""
 window = pygame.display.set_mode(SIZE)
 pygame.display.set_caption('Elevator building')
 
@@ -14,6 +25,9 @@ background = pygame.image.load(SKY_PATH)
 
 
 def blit_background():
+    """
+    Draws the background image onto the screen.
+    """
     y = 0
     while y < screen_height:
         screen.blit(background, (0, y))
@@ -24,6 +38,12 @@ my_building = Building(NUM_OF_FLOORS, NUM_OF_ELEVATORS, screen)
 
 scroll_speed = 20
 scroll_y = (screen.get_height() - window.get_height())
+
+
+"""
+Script responsible for managing the display window and handling events during runtime.
+This script initializes the display, processes user inputs, and updates the screen accordingly.
+"""
 
 running = True
 while running:
@@ -45,9 +65,6 @@ while running:
         elif event.type == pygame.MOUSEBUTTONUP:
             for floor in my_building.floors:
                 floor.pushed_button = False
-        # if event.type == pygame.MOUSEWHEEL:
-        #     scroll_y -= event.y * 15
-        #     scroll_y = min(max(scroll_y, 0), screen.get_height() - WINDOW_HEIGHT)
 
     blit_background()
     my_building.draw(screen)

@@ -1,19 +1,15 @@
 
+# window
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 700
 SIZE = WINDOW_WIDTH, WINDOW_HEIGHT
 
+# sizes of draw
 FLOOR_SPACER_HEIGHT = 7  # on pixels
 FLOOR_WIDTH = 140
 FLOOR_HEIGHT = 60
 ELEVATOR_SIZE = 50, 50
 ELEVATOR_HEIGHT = int(FLOOR_HEIGHT - FLOOR_SPACER_HEIGHT)  # Adjustment to floor height
-
-ELEVATOR_IMAGE_PATH = 'resources/elv.png'
-SKY_PATH = 'resources/sky.png'
-FLOOR_IMAGE_PATH = 'resources/new_floor_img.jpg'
-DING_FILE_PATH = "resources/ding.mp3"
-
 FLOOR_IMAGE_CROP_RECT = (0, 0, 400, 215)
 
 TEXT_NUMBER_FLOOR_SIZE = 30
@@ -21,26 +17,31 @@ BUTTON_RADIUS = 20
 CENTER_BUTTON_COLOR = OUTLINE_TIMER_COLOR = (245, 245, 234)
 BUTTON_OUTLINE_COLOR = 20, 20, 20
 BUTTON_SHADOW_COLOR = 50, 50, 50
-
-
+MARGIN = 10
 CENTER_BUTTON_SPASE = 20
 CENTER_TIMER_SPASE = 30
 
 
-MARGIN = 10
-
+# Source of the images
+ELEVATOR_IMAGE_PATH = 'resources/elv.png'
+SKY_PATH = 'resources/sky.png'
+FLOOR_IMAGE_PATH = 'resources/new_floor_img.jpg'
+DING_FILE_PATH = "resources/ding.mp3"
 SOUND_PATH = 'ding.mp3'
 
+# building setting
 NUM_OF_FLOORS = 20
 NUM_OF_ELEVATORS = 4
 BUILDING_HEIGHT = (NUM_OF_FLOORS * FLOOR_HEIGHT) + ((NUM_OF_FLOORS - 1) * FLOOR_SPACER_HEIGHT)
 
+# colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREEN = (13, 114, 22)
 RED = (85, 27, 3)
 
 
+# times
 STOP_TIME = 2000  # in milliseconds
 FLOOR_TRANSIT_TIME = 500
 PIXELS_TRAVELLED_PER_MILLISECOND = FLOOR_HEIGHT / FLOOR_TRANSIT_TIME

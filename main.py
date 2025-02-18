@@ -44,15 +44,14 @@ scroll_y = (screen.get_height() - window.get_height())
 Script responsible for managing the display window and handling events during runtime.
 This script initializes the display, processes user inputs, and updates the screen accordingly.
 """
-
 running = True
 while running:
     pos = None
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT:  # Exit the display if the window is closed.
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
+            if event.button == 1:  # left mouse button pressed.
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 mouse_y += scroll_y
                 pos = mouse_x, mouse_y
@@ -60,9 +59,8 @@ while running:
                 scroll_y -= scroll_speed
             elif event.button == 5:  # mouse wheel down
                 scroll_y += scroll_speed
-            scroll_y = max(0, min(screen_height - WINDOW_HEIGHT, scroll_y))
-
-        elif event.type == pygame.MOUSEBUTTONUP:
+            scroll_y = max(0, min(screen_height - WINDOW_HEIGHT, scroll_y))  # Keeps scroll_y within bounds.
+        elif event.type == pygame.MOUSEBUTTONUP:  # The mouse button was released.
             for floor in my_building.floors:
                 floor.pushed_button = False
 

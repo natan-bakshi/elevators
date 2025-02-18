@@ -17,9 +17,7 @@ def time_by_distance(y1, y2):
 
 
 class Elevator:
-    """
-     Represents a elevator in the building.
-    """
+    """ Represents an elevator in the building. """
     def __init__(self, serial_number, building):
         self.queue = []  # The list of tasks assigned to the elevator.
         self.serial_number = serial_number  # The unique identifier of the elevator.

@@ -15,9 +15,7 @@ def draw_space(screen, top_left, space_color):
 
 
 class Floor:
-    """
-    Represents a floor in the building.
-    """
+    """ Represents a floor in the building. """
     def __init__(self, level):
         self.level = level  # Floor number
         # self.index = None

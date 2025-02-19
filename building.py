@@ -10,6 +10,7 @@ class Building:
         for elevator in self.elevators:
             elevator.y = elevator.final = screen.get_height() - MARGIN - FLOOR_HEIGHT + FLOOR_SPACER_HEIGHT  # Initial position
 
+
     def draw(self, screen, button_down=None):
         """
         Draws the building, including floors and elevators.
@@ -30,6 +31,7 @@ class Building:
         for elevator in self.elevators:
             elevator.draw(screen, scaled_elevator_img)
 
+
     def allocate_elevator(self, dest):
         """
         Assigns the closest elevator to the requested index.
@@ -44,6 +46,7 @@ class Building:
         closest.final = dest
         return closest
 
+
     def is_floor_called(self, dest):
         """
         Checks if any elevator is already assigned to the requested index.
@@ -57,6 +60,7 @@ class Building:
                for elevator in self.elevators):
             return True
 
+
     def elevator_on_floor(self, level):
         """
         Updates the floor when an elevator arrives and performs necessary actions.
@@ -66,7 +70,8 @@ class Building:
         for floor in self.floors:
             if floor.top_left[1] + FLOOR_SPACER_HEIGHT == level:
                 floor.button_color = RED
-                floor.timer = 0.0
+                floor.timer = None
+
 
     def update(self, pos):
         """

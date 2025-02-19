@@ -18,13 +18,13 @@ class Floor:
     """ Represents a floor in the building. """
     def __init__(self, level):
         self.level = level  # Floor number
-        # self.index = None
         self.button_center = None  # Call button center position
         self.pushed_button = False  # Call button state
         self.top_left = None  # Top-left position of the floor
         self.button_color = RED  # Call button color
-        self.timer = 0.0  # Initial timer value
+        self.timer = None  # Initial timer value
         self.start_time = 0  # Time when the call button was pressed
+
 
     def button_pressed(self, x, y):
         """
@@ -39,6 +39,7 @@ class Floor:
         if ((x - cx) ** 2 + (y - cy) ** 2) ** 0.5 <= BUTTON_RADIUS:
             return self.level
 
+
     def draw_number(self, screen, center):
         """
         Draws the floor number on the screen.
@@ -51,6 +52,7 @@ class Floor:
         number = font.render(str(self.level + 1), True, self.button_color)
         number_pos = number.get_rect(center=center)
         screen.blit(number, number_pos)
+
 
     def draw_button(self, screen, center):
         """
@@ -71,6 +73,7 @@ class Floor:
         self.button_center = center
         self.draw_number(screen, center)
 
+
     def draw_timer(self, screen, center):
         """
         Draws and updates the floor button timer on the screen.
@@ -78,21 +81,23 @@ class Floor:
             screen (pygame.Surface): The surface to draw on.
             center (tuple): The (x, y) position of the timer.
         """
-        current_time = pygame.time.get_ticks()
-        elapsed_time = current_time - self.start_time
-        self.timer -= elapsed_time
-        remaining_time = max(0.0, self.timer) / 1000  # Change from ms to second
-        timer_text = f"{remaining_time:.1f}"
-        front_font = pygame.font.Font(None, TEXT_NUMBER_FLOOR_SIZE)
-        back_font = pygame.font.Font(None, TEXT_NUMBER_FLOOR_SIZE)  # Creates a frame to highlight text
-        back_font.set_bold(True)
-        timer_back_render = back_font.render(timer_text, True, OUTLINE_TIMER_COLOR)
-        timer_front_render = front_font.render(timer_text, True, BLACK)
-        timer_pos = timer_back_render.get_rect(center=center)
-        screen.blit(timer_back_render, timer_pos)
-        timer_pos = timer_front_render.get_rect(center=center)
-        screen.blit(timer_front_render, timer_pos)
-        self.start_time = current_time
+        if self.timer:
+            current_time = pygame.time.get_ticks()
+            elapsed_time = current_time - self.start_time
+            self.timer -= elapsed_time
+            remaining_time = max(0.0, self.timer) / 1000  # Change from ms to second
+            timer_text = f"{remaining_time:.1f}"
+            front_font = pygame.font.Font(None, TEXT_NUMBER_FLOOR_SIZE)
+            back_font = pygame.font.Font(None, TEXT_NUMBER_FLOOR_SIZE)  # Creates a frame to highlight text
+            back_font.set_bold(True)
+            timer_back_render = back_font.render(timer_text, True, OUTLINE_TIMER_COLOR)
+            timer_front_render = front_font.render(timer_text, True, BLACK)
+            timer_pos = timer_back_render.get_rect(center=center)
+            screen.blit(timer_back_render, timer_pos)
+            timer_pos = timer_front_render.get_rect(center=center)
+            screen.blit(timer_front_render, timer_pos)
+            self.start_time = current_time
+
 
     def draw(self, screen, image, space_color=BLACK, button_down=None):
         """

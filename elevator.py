@@ -30,6 +30,7 @@ class Elevator:
         self.last_update = None  # The last time the display was updated.
         self.my_building = building  # The building instance the elevator belongs to.
 
+
     def draw(self, screen, image):
         """
        Draws the elevator on the screen.
@@ -42,6 +43,7 @@ class Elevator:
         width, height = image.get_size()
         screen.blit(image, (MARGIN * 2 + FLOOR_WIDTH + self.serial_number * (width + MARGIN), self.y))
 
+
     def closest(self, y):
         """
         Returns the estimated time to reach the target position.
@@ -50,8 +52,8 @@ class Elevator:
         Returns:
             float: Estimated arrival time.
         """
-
         return self.occupied_time + time_by_distance(self.final, y)
+
 
     def config_task(self):
         """
@@ -64,6 +66,7 @@ class Elevator:
             self.status = "on move"
             print(f"Elevator {self.status}")
 
+
     def elapsed_time(self):
         """
         Returns the time elapsed since the last update and updates the timestamp.
@@ -74,6 +77,7 @@ class Elevator:
         elapsed_time = current_time - self.last_update
         self.last_update = current_time
         return elapsed_time, current_time
+
 
     def stop_time_passed(self):
         """
@@ -86,6 +90,7 @@ class Elevator:
         self.occupied_time -= min(self.occupied_time, elapsed_time)
         if delta_time >= STOP_TIME:
             return True
+
 
     def update(self):
         """

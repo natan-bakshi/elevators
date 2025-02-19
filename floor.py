@@ -81,7 +81,7 @@ class Floor:
             screen (pygame.Surface): The surface to draw on.
             center (tuple): The (x, y) position of the timer.
         """
-        if self.timer:
+        if self.timer is not None:
             current_time = pygame.time.get_ticks()
             elapsed_time = current_time - self.start_time
             self.timer -= elapsed_time

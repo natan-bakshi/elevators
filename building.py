@@ -70,7 +70,7 @@ class Building:
         for floor in self.floors:
             if floor.top_left[1] + FLOOR_SPACER_HEIGHT == level:
                 floor.button_color = RED
-                floor.timer = None
+                floor.timer = 0.0
 
 
     def update(self, pos):
